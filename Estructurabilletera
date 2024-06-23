@@ -1,0 +1,16 @@
+src/
+├── main/
+│   ├── java/
+│   │   ├── com/
+│   │   │   ├── wallet/
+│   │   │   │   ├── Main.java
+│   │   │   │   ├── model/
+│   │   │   │   │   ├── Wallet.java
+│   │   │   │   ├── service/
+│   │   │   │   │   ├── WalletService.java
+│   └── resources/
+├── test/
+│   ├── java/
+│   │   ├── com/
+│   │   │   ├── wallet/
+│   │   │   │   ├── WalletServiceTest.java
