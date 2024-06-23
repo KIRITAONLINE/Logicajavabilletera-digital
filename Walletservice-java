@@ -1,0 +1,23 @@
+package com.wallet.service;
+
+import com.wallet.model.Wallet;
+
+public class WalletService {
+    private Wallet wallet;
+
+    public WalletService() {
+        this.wallet = new Wallet();
+    }
+
+    public double checkBalance() {
+        return wallet.getBalance();
+    }
+
+    public void addFunds(double amount) {
+        wallet.deposit(amount);
+    }
+
+    public void spendFunds(double amount) {
+        wallet.withdraw(amount);
+    }
+}
