@@ -1,0 +1,53 @@
+/**
+ * La clase Wallet representa una billetera digital.
+ * Proporciona métodos para depositar y retirar dinero,
+ * así como para consultar el saldo actual.
+ */
+public class Wallet {
+    private double balance;
+
+    /**
+     * Constructor de la clase Wallet.
+     * Inicializa el saldo en 0.0.
+     */
+    public Wallet() {
+        this.balance = 0.0;
+    }
+
+    /**
+     * Devuelve el saldo actual de la billetera.
+     *
+     * @return el saldo actual
+     */
+    public double getBalance() {
+        return balance;
+    }
+
+    /**
+     * Deposita una cantidad de dinero en la billetera.
+     *
+     * @param amount la cantidad a depositar
+     * @throws IllegalArgumentException si la cantidad es negativa o cero
+     */
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        } else {
+            throw new IllegalArgumentException("Deposit amount must be positive");
+        }
+    }
+
+    /**
+     * Retira una cantidad de dinero de la billetera.
+     *
+     * @param amount la cantidad a retirar
+     * @throws IllegalArgumentException si la cantidad es negativa, cero, o mayor que el saldo actual
+     */
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        } else {
+            throw new IllegalArgumentException("Invalid withdraw amount");
+        }
+    }
+}
