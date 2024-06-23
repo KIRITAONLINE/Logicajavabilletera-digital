@@ -1,0 +1,43 @@
+package com.wallet;
+
+import com.wallet.service.WalletService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class WalletServiceTest {
+    private WalletService walletService;
+
+    @BeforeEach
+    public void setUp() {
+        walletService = new WalletService();
+    }
+
+    @Test
+    public void testInitialBalance() {
+        assertEquals(0.0, walletService.checkBalance());
+    }
+
+    @Test
+    public void testAddFunds() {
+        walletService.addFunds(100.0);
+        assertEquals(100.0, walletService.checkBalance());
+    }
+
+    @Test
+    public void testSpendFunds() {
+        walletService.addFunds(100.0);
+        walletService.spendFunds(50.0);
+        assertEquals(50.0, walletService.checkBalance());
+    }
+
+    @Test
+    public void testWithdrawMoreThanBalance() {
+        walletService.addFunds(100.0);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            walletService.spendFunds(150.0);
+        });
+        assertEquals("Invalid withdraw amount", exception.getMessage());
+    }
+}
